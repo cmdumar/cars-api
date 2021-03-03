@@ -4,7 +4,7 @@ env:
   POSTGRES_PASSWORD: <%= ENV['CARS_API_DATABASE_PASSWORD'] %>
   POSTGRES_DB: cars_api_test
 
-name: Linters
+name: RSpec Tests
 
 on: pull_request
 
