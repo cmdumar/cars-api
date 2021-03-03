@@ -1,0 +1,37 @@
+env:
+  RUBY_VERSION: 3.0
+  POSTGRES_USER: cars_api
+  POSTGRES_PASSWORD: <%= ENV['CARS_API_DATABASE_PASSWORD'] %>
+  POSTGRES_DB: cars_api_test
+
+name: Linters
+
+on: pull_request
+
+jobs:
+  rspec-test:
+    name: RSpec
+    needs: rubocop-test
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install postgres client
+        run: sudo apt-get install libpq-dev
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundler install
+      - name: Create database
+        run: |
+          bundler exec rails db:create RAILS_ENV=test
+          bundler exec rails db:migrate RAILS_ENV=test
+      - name: Run tests
+        run: bundler exec rake
