@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :users, only: [:index], :defaults => { :format => 'json' } 
+  resources :cars, only: [:index, :create, :show, :destroy], :defaults => { :format => 'json' } 
+  resources :appointments, only: [:index, :create, :destroy], :defaults => { :format => 'json' } 
 end
