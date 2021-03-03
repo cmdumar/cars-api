@@ -2,12 +2,6 @@ name: RSpec Tests
 
 on: pull_request
 
-env:
-  RUBY_VERSION: 3.0
-  POSTGRES_USER: cars_api
-  POSTGRES_PASSWORD: <%= ENV['CARS_API_DATABASE_PASSWORD'] %>
-  POSTGRES_DB: cars_api_test
-
 jobs:
   rspec-test:
     name: RSpec
