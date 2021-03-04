@@ -13,22 +13,22 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_token
-    if auth_header
-      token = auth_header.split(' ')[1]
-      # header: { 'Authorization': 'Bearer <token>' }
-      begin
-        JWT.decode(token, 's3cr3t', true, algorithm: 'HS256')
-      rescue JWT::DecodeError
-        nil
-      end
+    return unless auth_header
+
+    token = auth_header.split(' ')[1]
+    # header: { 'Authorization': 'Bearer <token>' }
+    begin
+      JWT.decode(token, 's3cr3t', true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
     end
   end
 
   def logged_in_user
-    if decoded_token
-      user_id = decoded_token[0]['user_id']
-      @user = User.find_by(id: user_id)
-    end
+    return unless decoded_token
+
+    user_id = decoded_token[0]['user_id']
+    @user = User.find_by(id: user_id)
   end
 
   def logged_in?
