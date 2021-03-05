@@ -12,9 +12,9 @@ class CarsController < ApplicationController
     # @car = Car.create!(car_params)
     @car = Car.new(car_params)
     if @car.save
-      render json_response(@car, :created)
+      json_response(@car, :created)
     else
-      render json_response(@car.errors, :unprocessable_entity)
+      json_response(@car.errors, :unprocessable_entity)
     end
   end
 
@@ -23,7 +23,7 @@ class CarsController < ApplicationController
     if @car
       render :show
     else
-      render json_response({ error: 'Car not found!' }, 404)
+      json_response({ error: 'Car not found!' }, 404)
     end
   end
 
