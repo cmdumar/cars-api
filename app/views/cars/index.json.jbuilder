@@ -1,10 +1,11 @@
-json.array! @cars.each_with_index do |item, _idx|
-  json.id item.id
-  json.model item.model
-  json.price item.price
-  json.top_speed item.top_speed
-  json.range item.range
-  json.peak_power item.peak_power
-  json.createdAt item.created_at
-  json.updatedAt item.updated_at
+json.array! @cars.each_with_index do |car, _idx|
+  json.id car.id
+  json.model car.model
+  json.price car.price
+  json.top_speed car.top_speed
+  json.range car.range
+  json.peak_power car.peak_power
+  json.picture car.picture.each do |i|
+    json.img i.image_url if i.type == 'logo'
+  end
 end

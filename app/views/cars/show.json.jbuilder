@@ -4,5 +4,9 @@ json.price @car.price
 json.top_speed @car.top_speed
 json.range @car.range
 json.peak_power @car.peak_power
-json.createdAt @car.created_at
-json.updatedAt @car.updated_at
+json.logo car.picture.each do |i|
+  json.img i.image_url if i.type == 'logo'
+end
+json.featuredImages car.picture.each do |i|
+  json.img i.image_url if i.type == 'feature'
+end
