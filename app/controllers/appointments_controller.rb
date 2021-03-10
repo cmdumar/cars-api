@@ -6,13 +6,18 @@ class AppointmentsController < ApplicationController
 
   def create
     appointment = Appointment.create(appointment_params)
-    json_response(appointment)
+    appointment.user_id = @user.id
+    if appointment.save
+      json_response(appointment, :created)
+    else
+      json_response(appointment.errors.full_messages, 500)
+    end
   end
 
   def destroy
     appointment = Appointment.find(params[:id])
     appointment.destroy
-    head :no_content
+    json_response('Successfully delete appointment')
   end
 
   private
