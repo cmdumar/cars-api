@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       token = Helper.encode_token({ user_id: user.id })
       json_response({ user: user, token: token })
     else
-      json_response('Invalid username or password')
+      json_response('Invalid username or password', 401)
     end
   end
 end
