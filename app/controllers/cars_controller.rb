@@ -1,6 +1,4 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[show destroy]
-
   # GET /cars
   def index
     cars = Car.all
@@ -20,6 +18,7 @@ class CarsController < ApplicationController
 
   # GET /cars/:id
   def show
+    car = set_car
     if car
       render :show
     else
@@ -28,8 +27,13 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    car.destroy
-    head :no_content
+    car = set_car
+    return unless car
+
+    if car.destroy
+      json_response('Successfully deleted the car', 202)
+    else
+      json_response(car, 'Something went wrong')
   end
 
   private
@@ -41,5 +45,6 @@ class CarsController < ApplicationController
 
   def set_car
     car = Car.find(params[:id])
+    return car if car
   end
 end

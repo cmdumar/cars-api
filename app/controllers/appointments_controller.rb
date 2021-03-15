@@ -16,8 +16,12 @@ class AppointmentsController < ApplicationController
 
   def destroy
     appointment = Appointment.find(params[:id])
-    appointment.destroy
-    json_response('Successfully delete appointment')
+    return unless appointment
+
+    if appointment.destroy
+      json_response('Successfully delete appointment', 202)
+    else
+      json_response(appointment, 'Something went wrong!', )
   end
 
   private
