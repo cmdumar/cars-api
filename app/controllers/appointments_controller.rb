@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointments = Appointment.where(user_id: @user.id)
+    appointments = Appointment.where(user_id: @user.id)
     render :index
   end
 

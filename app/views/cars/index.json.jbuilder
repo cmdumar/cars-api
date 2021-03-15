@@ -1,4 +1,4 @@
-json.array! @cars do |car|
+json.array! cars do |car|
   json.id car.id
   json.model car.model
   json.price car.price

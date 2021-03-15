@@ -3,24 +3,24 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.all
+    cars = Car.all
     render :index
   end
 
   # POST /cars
   def create
     # @car = Car.create!(car_params)
-    @car = Car.new(car_params)
-    if @car.save
-      json_response(@car, :created)
+    car = Car.new(car_params)
+    if car.save
+      json_response(car, :created)
     else
-      json_response(@car.errors, :unprocessable_entity)
+      json_response(car.errors, :unprocessable_entity)
     end
   end
 
   # GET /cars/:id
   def show
-    if @car
+    if car
       render :show
     else
       json_response({ error: 'Car not found!' }, 404)
@@ -28,7 +28,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car.destroy
+    car.destroy
     head :no_content
   end
 
@@ -40,6 +40,6 @@ class CarsController < ApplicationController
   end
 
   def set_car
-    @car = Car.find(params[:id])
+    car = Car.find(params[:id])
   end
 end
