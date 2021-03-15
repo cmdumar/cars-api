@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   # GET /cars
   def index
     cars = Car.all
-    render :index
+    render :index, locals: { cars: cars }
   end
 
   # POST /cars
@@ -34,6 +34,7 @@ class CarsController < ApplicationController
       json_response('Successfully deleted the car', 202)
     else
       json_response(car, 'Something went wrong')
+    end
   end
 
   private

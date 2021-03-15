@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   def index
     appointments = Appointment.where(user_id: @user.id)
-    render :index
+    render :index, locals: { appointments: appointments }
   end
 
   def create
@@ -21,7 +21,8 @@ class AppointmentsController < ApplicationController
     if appointment.destroy
       json_response('Successfully delete appointment', 202)
     else
-      json_response(appointment, 'Something went wrong!', )
+      json_response(appointment, 'Something went wrong!')
+    end
   end
 
   private
