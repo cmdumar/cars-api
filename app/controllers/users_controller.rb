@@ -5,8 +5,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     if @user.valid?
-      helper = Helper.new
-      token = helper.encode_token({ user_id: @user.id })
+      token = Helper.encode_token({ user_id: @user.id })
       render json: { user: @user, token: token }
     else
       render json: { error: 'Invalid email or password' }
