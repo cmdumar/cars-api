@@ -5,8 +5,8 @@ class Picture < ApplicationRecord
   after_save do
     car = Car.find_by(id: car_id)
     obj = {
-      img: self.image_url,
-      category: self.category
+      img: image_url,
+      category: category
     }
     car.image_container << obj.to_json
     car.save
