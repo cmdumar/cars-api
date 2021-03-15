@@ -3,7 +3,7 @@ class Helper
     @request = request
   end
 
-  def encode_token(payload)
+  def self.encode_token(payload)
     JWT.encode(payload, 's3cr3t')
   end
 

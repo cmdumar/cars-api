@@ -20,7 +20,7 @@ class CarsController < ApplicationController
   def show
     car = set_car
     if car
-      render :show
+      render :show, locals: { car: car }
     else
       json_response({ error: 'Car not found!' }, 404)
     end
