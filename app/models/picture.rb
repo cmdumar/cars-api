@@ -2,7 +2,7 @@ class Picture < ApplicationRecord
   include ImageUploader::Attachment(:image)
   belongs_to :car
 
-  after_save do
+  after_create do
     car = Car.find_by(id: car_id)
     obj = {
       img: image_url,

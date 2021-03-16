@@ -7,7 +7,6 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
-    # @car = Car.create!(car_params)
     car = Car.new(car_params)
     if car.save
       json_response(car, :created)
