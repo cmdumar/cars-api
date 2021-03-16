@@ -7,7 +7,14 @@ json.peak_power car.peak_power
 car.image_container.each do |i|
   if valid?(i)
     obj = JSON.parse(i)
-    json.logo obj if obj['category'] == 'logo'
+    json.logo obj['img'] if obj['category'] == 'logo'
   end
 end
-json.images car.image_container
+json.images do
+  json.array! car.image_container do |i|
+    if valid?(i)
+      obj = JSON.parse(i)
+      json.url obj['img'] if obj['category'] == 'featured'
+    end
+  end
+end
