@@ -10,3 +10,4 @@ car.image_container.each do |i|
     json.logo obj if obj['category'] == 'logo'
   end
 end
+json.images car.image_container

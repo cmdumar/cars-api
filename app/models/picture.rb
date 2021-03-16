@@ -11,4 +11,6 @@ class Picture < ApplicationRecord
     car.image_container << obj.to_json
     car.save
   end
+
+  validates_presence_of :category, :car_id, :image
 end
