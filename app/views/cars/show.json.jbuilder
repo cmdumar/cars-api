@@ -4,4 +4,9 @@ json.price car.price
 json.top_speed car.top_speed
 json.range car.range
 json.peak_power car.peak_power
-json.images JSON.parse(car.image_container.last)
+car.image_container.each do |i|
+  if valid?(i)
+    obj = JSON.parse(i)
+    json.logo obj if obj['category'] == 'logo'
+  end
+end

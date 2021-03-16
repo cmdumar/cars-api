@@ -19,6 +19,8 @@ class CarsController < ApplicationController
   # GET /cars/:id
   def show
     car = set_car
+    return unless car
+
     if car
       render :show, locals: { car: car }
     else
@@ -45,7 +47,10 @@ class CarsController < ApplicationController
   end
 
   def set_car
-    car = Car.find(params[:id])
+    car = Car.find_by(id: params[:id])
     return car if car
+
+    find_error('user')
+    nil
   end
 end
