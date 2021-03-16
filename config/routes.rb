@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :cars, only: [:index, :create, :show, :destroy]
     resources :appointments, only: [:index, :create, :destroy]
   end
+  resources :pictures, only: [:index, :create, :destroy]
   resources :sessions, only: [:create]
-  resources :pictures, only: [:create, :destroy]
 end
