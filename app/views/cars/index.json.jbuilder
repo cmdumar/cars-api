@@ -11,5 +11,4 @@ json.array! cars do |car|
       json.logo obj['img'] if obj['category'] == 'logo'
     end
   end
-  json.images car.image_container
 end

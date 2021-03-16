@@ -49,7 +49,7 @@ class CarsController < ApplicationController
     car = Car.find_by(id: params[:id])
     return car if car
 
-    find_error('user')
+    find_error('car')
     nil
   end
 end
