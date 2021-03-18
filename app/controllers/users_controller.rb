@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
     if user.valid?
       token = Helper.encode_token({ user_id: user.id })
-      render json_response({ user: user, token: token })
+      json_response({ user: user, token: token })
     else
-      render json_response({ error: 'Invalid email or password' }, 422)
+      json_response({ error: 'Invalid email or password' }, 422)
     end
   end
 
