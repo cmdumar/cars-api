@@ -5,10 +5,10 @@ json.array! cars do |car|
   json.top_speed car.top_speed
   json.range car.range
   json.peak_power car.peak_power
-  car.image_container.each do |i|
-    if valid?(i)
-      obj = JSON.parse(i)
-      json.logo obj['img'] if obj['category'] == 'logo'
+  json.images do
+    json.array! car.pictures.each do |i|
+      json.url i.image_url
+      json.category i.category
     end
   end
 end
