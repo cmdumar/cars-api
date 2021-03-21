@@ -1,24 +1,55 @@
-# README
+# Cars API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Car booking API with and Ruby on Rails.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby on Rails
+- Rubocop
+- RSpec
+- Shrine
 
-* System dependencies
+## Live Demo
 
-* Configuration
+[Live API Link](https://safe-retreat-53793.herokuapp.com/)
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To get a local copy up and running follow these simple example steps.
 
-* How to run the test suite
+## Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby v3
+- Ruby on Rails
+- Cloudinary
 
-* Deployment instructions
+## To run the Project
 
-* ...
+- Run `https://github.com/mohammadumar28/react-capstone.git` to clone the project
+- Go to the cloned directory
+- Create a Cloudinary account and fill the API details in .env.example file
+- Change the filename to .env
+- Run `bundle install` to install gems
+- Run `rails server` to start the app
+
+* To run tests `bundle exec rspec`
+
+## Authors
+
+👤 **Muhammad Umar**
+
+- GitHub: [@mohammadumar28](https://github.com/mohammadumar28)
+- Twitter: [@Mohammadumar28](https://twitter.com/Mohammadumar28)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mdumar28/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
